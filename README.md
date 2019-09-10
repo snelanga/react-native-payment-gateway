@@ -33,16 +33,21 @@ change Podfile into this or lastest version
 #### Android
 
 1. Open up `android/app/src/main/java/[...]/MainApplication.java`
-  - Add `import com.paymentgateway.ReactNativeMidtransPackage;` to the imports at the top of the file
+  - Add `import com.paymentgateway.MidtransPackage;` to the imports at the top of the file
   - Add `new MidtransPackage()` to the list returned by the `getPackages()` method
 2. Append the following lines to `android/settings.gradle`:
   	```
   	include ':react-native-payment-gateway'
-  	project(':react-native-payment-gateway').projectDir = new File(rootProject.projectDir, 	'../node_modules/react-native-payment-gateway/android')
+    project(':react-native-payment-gateway').projectDir = new File(rootProject.projectDir, 	'../node_modules/react-native-payment-gateway/android')
   	```
 3. Insert the following lines inside the dependencies block in `android/app/build.gradle`:
   	```
-      compile project(':react-native-payment-gateway')
+      implementation project(':react-native-payment-gateway')
+  	```
+4. Append midtrans repository to application level build.gradle
+  	```
+      maven { url "http://dl.bintray.com/pt-midtrans/maven" }
+      maven { url "https://jitpack.io" }
   	```
 
 ## Usage
