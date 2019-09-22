@@ -1,23 +1,23 @@
 buildscript {
     repositories {
-        jcenter()
         google()
+        jcenter()
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.1.0'
+        classpath 'com.android.tools.build:gradle:3.3.2'
     }
 }
 
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "27.0.1"
+    compileSdkVersion 28
+    buildToolsVersion = "28.0.3"
 
     defaultConfig {
         minSdkVersion 16
-        targetSdkVersion 25
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
     }
@@ -27,8 +27,8 @@ android {
 }
 
 repositories {
-    jcenter()
     google()
+    jcenter()
     // Add the midtrans repository into the list of repositories
     maven { url "http://dl.bintray.com/pt-midtrans/maven" }
     maven { url "https://jitpack.io" }
