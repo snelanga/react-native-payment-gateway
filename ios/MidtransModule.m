@@ -10,6 +10,8 @@
 }
 RCT_EXPORT_MODULE();
 
+RCTResponseSenderBlock successCallback;
+
 RCT_EXPORT_METHOD(checkOut:(NSDictionary*) optionConect
                   : (NSDictionary*) transRequest
                   : (NSArray*) items
@@ -82,7 +84,7 @@ MidtransUIFontSource fontSource =
              //set the delegate
              vc.paymentDelegate = self;
 
-             callback(@[@"init", [NSNull null]]);
+             successCallback = callback;
          }
          else {
              callback(@[error.localizedDescription, [NSNull null]]);
@@ -93,6 +95,7 @@ MidtransUIFontSource fontSource =
 #pragma mark - MidtransUIPaymentViewControllerDelegate
 
 - (void)paymentViewController:(MidtransUIPaymentViewController *)viewController paymentSuccess:(MidtransTransactionResult *)result{
+    successCallback(@[@"success!"]);
     RCTLogInfo(@"%@", result);
 }
 
